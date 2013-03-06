@@ -1,0 +1,54 @@
+/* 
+    Document   : micss
+    Created on : 11-ene-2013, 18:23:10
+    Author     : al036007
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#formulario{
+    margin-top: 20px;
+    margin-left: 550px;
+    }
+#buscar{
+    
+    margin-top: -11px;
+}
+#entrada{
+    width: 130px;
+}
+#tabla1{
+   color:black;
+   margin: 10px 300px;
+   
+}
+#tabla{
+    
+}
+#alerta{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+#datos{
+    margin-top: 20px;
+    
+    
+}
+#datos2{
+    margin-top: 20px;
+    position: fixed;
+   margin-left: 680px;
+}
+#cabecera{
+background: -moz-linear-gradient(top, #275A81 0%, #275A81 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#275A81), color-stop(100%,#275A81)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #275A81 0%,#275A81 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #275A81 0%,#275A81 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #275A81 0%,#275A81 100%); /* IE10+ */
+background: linear-gradient(to bottom, #275A81 0%,#275A81 100%); /* W3C */
+}
+.modal{
+
+}
+
+
