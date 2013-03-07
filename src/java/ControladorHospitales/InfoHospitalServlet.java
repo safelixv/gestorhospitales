@@ -5,7 +5,7 @@
 package ControladorHospitales;
 
 
-import DAO.HospitalDAO;
+import DAO.HospitalDAOMysql;
 import Pojos.Hospital;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class InfoHospitalServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {            
             ArrayList<Hospital> listaHospitales = new ArrayList();
-            HospitalDAO hospitalDAO = new HospitalDAO();
+            HospitalDAOMysql hospitalDAO = new HospitalDAOMysql();
             String hospitalId = request.getParameter("id");
             try {
                 Thread.sleep(1000); //se puede variar el retardo

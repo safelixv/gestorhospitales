@@ -4,7 +4,8 @@
  */
 package ControladorPacientes;
 
-import DAO.PacienteDAO;
+import DAO.GestorHospitalesDAO;
+import DAO.PacienteDAOMysql;
 import Pojos.Paciente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,7 +43,7 @@ public class AltaPacienteServlet extends HttpServlet {
             String DNI = request.getParameter("DNI");
             String NSS = request.getParameter("NSS");
             String sexo = request.getParameter("sexo");
-            String hospitalId = request.getParameter("hospital_id");
+            String habitacionId = request.getParameter("habitacion_id");
             Paciente paciente = new Paciente();
             paciente.setNombre(nombre);
             paciente.setApellidos(apellidos);
@@ -51,8 +52,8 @@ public class AltaPacienteServlet extends HttpServlet {
             paciente.setDireccion(direccion);
             paciente.setNSS(NSS);
             paciente.setSexo(sexo);
-            paciente.setHospitalId(Integer.parseInt(hospitalId));
-            PacienteDAO.altaPacientes(paciente);
+            paciente.setHabitacionId(Integer.parseInt(habitacionId));
+            GestorHospitalesDAO.getInstance().getPacienteDAO().altaPacientes(paciente);
             
         } finally {
             RequestDispatcher d = request.getRequestDispatcher("index.jsp");

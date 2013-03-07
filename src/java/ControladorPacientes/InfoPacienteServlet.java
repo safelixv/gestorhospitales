@@ -4,7 +4,7 @@
  */
 package ControladorPacientes;
 
-import DAO.PacienteDAO;
+import DAO.PacienteDAOMysql;
 import Pojos.Paciente;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -45,7 +45,7 @@ public class InfoPacienteServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             ArrayList<Paciente> listaPacientes = new ArrayList();
-            PacienteDAO pacienteDAO = new PacienteDAO();
+            PacienteDAOMysql pacienteDAO = new PacienteDAOMysql();
             String id = request.getParameter("id");
 
             if (id.equals("all")) {

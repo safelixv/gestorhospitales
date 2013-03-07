@@ -46,16 +46,13 @@ function detalle_paciente(id){
         data: null,
         success: function(paciente){               
             var tabla2 = "<table class=\"table table-bordered\" id=\"tabla1\"><tr><td>ID</td><td>Nombre</td>\n\
-                        <td>Apellidos</td><td>Direccion</td><td>Telefono</td><td>DNI</td><td>NISS</td><td>Sexo</td><td>hospital</td></tr>";
-
-            var hospital=$.getValues("InfoHospitalServlet?id="+paciente.hospitalId); 
-            alert(hospital + paciente.hospitalId);
-
+                        <td>Apellidos</td><td>Direccion</td><td>Telefono</td><td>DNI</td><td>NISS</td><td>Sexo</td><td>habitacion</td></tr>";
+            var habitacion=$.getValues("InfoHabitacionServlet?id="+paciente.habitacionId); 
+            
             tabla2 += '<tr><td>'+paciente.id+'</td>\n\
                         <td>' +paciente.nombre+'</td><td>' +paciente.apellidos+'</td>\n\
-                <td>' +paciente.direccion+ '</td><td>' +paciente.telefono+ '</td><td>' +paciente.DNI+ '</td><td>' +paciente.NSS+ '</td><td>' +paciente.Sexo+ '</td>'+ '</td><td>' +hospital.nombre+ '</td>';
-            tabla2 += '</tr></table>';  
-                               
+                <td>' +paciente.direccion+ '</td><td>' +paciente.telefono+ '</td><td>' +paciente.DNI+ '</td><td>' +paciente.NSS+ '</td><td>' +paciente.Sexo+ '</td>'+ '</td><td>' +habitacion.numero+ '</td>';
+            tabla2 += '</tr></table>';                                
             $("#datosmodal").empty();
             $("#datosmodal").html(tabla2); 
                                       
@@ -89,7 +86,7 @@ function editar_paciente(id){
             "<input name='NSS' type='text' class='input-large' value='"+paciente.NSS+"'/>"+             
             "<label>sexo</label>"+  
             "<input name='sexo' type='text' class='input-large' value='"+paciente.sexo+"'/>"+ 
-            select_hospitales(paciente.hospitalId) +
+            select_habitaciones(paciente.habitacionId) +
             "<button name='save-paciente' type='submit' class='btn btn-primary'>Editar</input>"+  
             
             "</form>";  
@@ -133,19 +130,19 @@ function baja_paciente(id){
 
 
 
-function select_hospitales(idHospital){
-    var hospitales=$.getValues("InfoHospitalServlet?id=all");  
-    var selectHospitales='<select name="hospital_id">';
-    $.each(hospitales, function(index,hospital){
+function select_habitaciones(idHabitacion){
+    var habitaciones=$.getValues("InfoHabitacionServlet?id=all");  
+    var selectHabitaciones='<select name="habitacion_id">';
+    $.each(habitaciones, function(index,habitacion){
         select='';
-        if (hospital.id == idHospital){
+        if (habitacion.id == idHabitacion){
             select='selected';
         }
-        selectHospitales+='<option value="'+hospital.id+'" '+select+'>'+hospital.nombre+'</option>';
+        selectHabitaciones+='<option value="'+habitacion.id+'" '+select+'>'+habitacion.numero+'</option>';
     }
     ); 
-    selectHospitales+='</select>';
-    return selectHospitales;
+    selectHabitaciones+='</select>';
+    return selectHabitaciones;
 }
 
 function alta_paciente()
@@ -167,7 +164,7 @@ function alta_paciente()
     "<input name='NSS' type='text' class='input-large'/>"+    
     "<label>sexo</label>"+  
     "<input name='sexo' type='text' class='input-large'/>"+     
-    "<label>hospital</label>"+  select_hospitales(0) + '</br>' +
+    "<label>habitacion</label>"+  select_habitaciones(0) + '</br>' +
     "<button name='save-paciente' type='submit' class='btn btn-primary'>Dar de alta</input>"+                      
     "</form>";                                
     $("#datosmodal").append(form);      

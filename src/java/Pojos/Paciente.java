@@ -19,6 +19,7 @@ public class Paciente {
     private String NSS;
     private String sexo;
     private Integer hospitalId;
+    private Integer habitacionId;
 
     public String getDNI() {
         return DNI;
@@ -98,6 +99,17 @@ public class Paciente {
         this.hospitalId = hospitalId;
     }
 
+    public Integer getHabitacionId() {
+        return habitacionId;
+    }
+
+    public void setHabitacionId(Integer habitacionId) {
+        this.habitacionId = habitacionId;
+    }
+    
+    
+
+    
     
     
 }

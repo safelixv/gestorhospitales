@@ -4,7 +4,8 @@
  */
 package ControladorPacientes;
 
-import DAO.PacienteDAO;
+import DAO.GestorHospitalesDAO;
+import DAO.PacienteDAOMysql;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -34,7 +35,7 @@ public class BajaPacienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String id = request.getParameter("id");
-            PacienteDAO.bajapacientes(Integer.parseInt(id));
+            GestorHospitalesDAO.getInstance().getPacienteDAO().bajapacientes(Integer.parseInt(id));
             out.print("Paciente dado de baja");
             RequestDispatcher d = request.getRequestDispatcher("index.jsp?ver=pacientes");
             d.forward(request, response);        

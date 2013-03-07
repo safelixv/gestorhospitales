@@ -4,7 +4,8 @@
  */
 package ControladorHospitales;
 
-import DAO.HospitalDAO;
+import DAO.GestorHospitalesDAO;
+import DAO.HospitalDAOMysql;
 import Pojos.Hospital;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,7 +46,7 @@ public class AltaHospitalServlet extends HttpServlet {
             hospital.setTelefono(Integer.parseInt(telefono));
             hospital.setPersonal(personal);
             hospital.setSalas(Integer.parseInt(salas));
-            HospitalDAO.altaHospitales(hospital);
+            GestorHospitalesDAO.getInstance().getHospitalDAO().altaHospitales(hospital);
             
         } finally {
             RequestDispatcher d = request.getRequestDispatcher("index.jsp");

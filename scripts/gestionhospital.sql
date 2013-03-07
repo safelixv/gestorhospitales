@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-02-2013 a las 13:12:11
+-- Tiempo de generación: 07-03-2013 a las 11:20:43
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -23,15 +23,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `especialidad`
+-- Estructura de tabla para la tabla `habitaciones`
 --
 
-CREATE TABLE IF NOT EXISTS `especialidad` (
-  `Id_especialidad` int(6) NOT NULL,
-  `Nombre_especialidad` varchar(255) NOT NULL,
-  `Sala_especialidad` int(6) NOT NULL,
-  `Personal_especialidad` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `habitaciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` int(11) DEFAULT NULL,
+  `telefono` int(11) DEFAULT NULL,
+  `hospital_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `habitaciones`
+--
+
+INSERT INTO `habitaciones` (`id`, `numero`, `telefono`, `hospital_id`) VALUES
+(1, 1, 1111, 1),
+(2, 2, 2222, 1);
 
 -- --------------------------------------------------------
 
@@ -40,13 +49,22 @@ CREATE TABLE IF NOT EXISTS `especialidad` (
 --
 
 CREATE TABLE IF NOT EXISTS `hospital` (
-  `Id_hospital` int(6) NOT NULL,
-  `Direccion_hospital` varchar(255) NOT NULL,
-  `Nombre_hospital` varchar(255) NOT NULL,
-  `Telefono_hospital` int(9) NOT NULL,
-  `Personal_hospital` varchar(255) NOT NULL,
-  `Salas_hospital` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Id` int(6) NOT NULL AUTO_INCREMENT,
+  `Direccion` varchar(255) DEFAULT NULL,
+  `Nombre` varchar(255) DEFAULT NULL,
+  `Telefono` int(9) DEFAULT NULL,
+  `Personal` varchar(255) DEFAULT NULL,
+  `Salas` int(6) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `hospital`
+--
+
+INSERT INTO `hospital` (`Id`, `Direccion`, `Nombre`, `Telefono`, `Personal`, `Salas`) VALUES
+(1, 'la fe', 'La fe', 32322, 'muchos', 3),
+(2, 'blasco ibañez', 'quiron', 96582, 'pocos', 10);
 
 -- --------------------------------------------------------
 
@@ -56,26 +74,35 @@ CREATE TABLE IF NOT EXISTS `hospital` (
 
 CREATE TABLE IF NOT EXISTS `pacientes` (
   `Id` int(6) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(255) NOT NULL,
-  `Apellidos` varchar(255) NOT NULL,
-  `Telefono` int(9) NOT NULL,
-  `Direccion` varchar(255) NOT NULL,
-  `DNI` varchar(255) NOT NULL,
-  `NSS` varchar(255) NOT NULL,
+  `Nombre` varchar(255) DEFAULT NULL,
+  `Apellidos` varchar(255) DEFAULT NULL,
+  `Telefono` int(9) DEFAULT NULL,
+  `Direccion` varchar(255) DEFAULT NULL,
+  `DNI` varchar(255) DEFAULT NULL,
+  `NSS` varchar(255) DEFAULT NULL,
+  `sexo` varchar(10) DEFAULT NULL,
+  `hospital_id` int(11) DEFAULT NULL,
+  `habitacion_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`Id`, `Nombre`, `Apellidos`, `Telefono`, `Direccion`, `DNI`, `NSS`) VALUES
-(1, 'Cristian', 'Trives Gil', 612578245, 'c/mmlilla', '21704877F', '11345678'),
-(2, 'Jordi', 'Chisbert Perales', 622578245, 'c/isla cabrera', '22704877F', '12345678'),
-(3, 'Alejandro', 'Riaza Ross', 632578245, 'c/bernat descoll', '23704877F', '13345678'),
-(4, 'Guillermo', 'Porras Gomez', 642578245, 'c/Audsias march', '2704877F', '14345678'),
-(5, 'Miguel', 'Alonso Lopez', 652578245, 'c/Hermanos maristas', '25704877F', '15345678'),
-(6, 'Richard', 'Gauto Ojeda', 662578245, 'c/la plata', '26704877F', '16345678');
+INSERT INTO `pacientes` (`Id`, `Nombre`, `Apellidos`, `Telefono`, `Direccion`, `DNI`, `NSS`, `sexo`, `hospital_id`, `habitacion_id`) VALUES
+(2, 'Jordi', 'Chisbert Perales', 622578245, 'c/isla cabrera', '22704877F', '12345678', NULL, 0, NULL),
+(3, 'Alejandro', 'Riaza Ross', 632578245, 'c/bernat descoll', '23704877F', '13345678', NULL, 0, NULL),
+(5, 'Miguel', 'Alonso Lopez', 652578245, 'c/Hermanos maristas', '25704877F', '15345678', NULL, 0, NULL),
+(6, 'Richard', 'Gauto Ojeda', 662578245, 'c/la plata', '26704877F', '16345678', NULL, 0, NULL),
+(13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL),
+(14, 'aaa', 'aaa', 2123, '', '', '', '', 0, NULL),
+(16, 'bbb', 'bbb', 123, '', '', '', '', 0, NULL),
+(19, 'eee', 'eee', 231, '', '', '', '', 0, NULL),
+(21, 'ggg', 'ggg', 123, '', '', 'null', '', 0, NULL),
+(23, 'rr', 'rr', 123, 'rr', 'rr', 'rr', 'h', 1, NULL),
+(24, 'joselito', 'perez', 958545, 'calle', '3232', '322', 'h', 1, NULL),
+(25, 'el rey', 'borbon', 5655, 'madrid', '1', '1', 'H', NULL, 2);
 
 -- --------------------------------------------------------
 

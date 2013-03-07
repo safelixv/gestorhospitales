@@ -4,7 +4,8 @@
  */
 package ControladorHospitales;
 
-import DAO.HospitalDAO;
+import DAO.GestorHospitalesDAO;
+import DAO.HospitalDAOMysql;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ public class BajaHospitalServlet extends HttpServlet {
        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String id = request.getParameter("id");
-            HospitalDAO.bajaHospitales(Integer.parseInt(id));
+            GestorHospitalesDAO.getInstance().getHospitalDAO().bajaHospitales(Integer.parseInt(id));
             out.print("Hospital dado de baja");
             out.flush();
         }

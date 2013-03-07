@@ -4,10 +4,17 @@
  */
 package DAO;
 
+import Pojos.Habitacion;
+import java.util.ArrayList;
+
 /**
  *
- * @author Alejandro
+ * @author ACE
  */
-public class HabitacionDAO {
+public interface HabitacionDAO {
+
+    Habitacion recuperaHabitacion(int id);
+
+    ArrayList<Habitacion> recuperaHabitaciones();
     
 }

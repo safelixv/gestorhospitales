@@ -5,7 +5,8 @@
 package ControladorHospitales;
 
 
-import DAO.HospitalDAO;
+import DAO.GestorHospitalesDAO;
+import DAO.HospitalDAOMysql;
 import Pojos.Hospital;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +51,7 @@ public class EditarHospitalServlet extends HttpServlet {
         hospital.setTelefono(Integer.parseInt(telefono));
         hospital.setPersonal(personal);
         hospital.setSalas(Integer.parseInt(salas));
-        HospitalDAO.editarHospitales(hospital);
+        GestorHospitalesDAO.getInstance().getHospitalDAO().editarHospitales(hospital);
         RequestDispatcher d = request.getRequestDispatcher("index.jsp");
         d.forward(request, response);        
         out.flush();
